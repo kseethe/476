@@ -1,14 +1,27 @@
 # part 1
-from collections import defaultdict
+word = input("Type in your word: ")
+word = word.lower()
+pattern = ""
 
-def word_to_pattern(word):
-    word = word.lower()
-    mapping = {}
-    pattern = ''
-    current_char = ord('a')
-    for char in word:
-        if char not in mapping:
-            mapping[char] = chr(current_char)
-            current_char += 1
-        pattern += mapping[char]
-    return pattern
+alph = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
+        "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+
+letters = []
+letters2 = []
+pattern_let = []
+
+for i in word:
+    letters.append(i)
+
+for j in letters:
+    if j not in letters2:
+        letters2.append(j)
+
+for k in letters2:
+    pattern_let.append(alph.pop(0))
+
+for char in word:
+    index = letters2.index(char)
+    pattern += pattern_let[index]
+
+print(pattern)
